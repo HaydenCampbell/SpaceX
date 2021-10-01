@@ -1,16 +1,14 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.serialization")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
     android()
 
-    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
+  /*  val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
         System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
         System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
         else -> ::iosX64
@@ -22,11 +20,12 @@ kotlin {
                 baseName = "shared"
             }
         }
-    }
+    }*/
     val coroutinesVersion = "1.5.0-native-mt"
     val serializationVersion = "1.2.2"
     val ktorVersion = "1.6.1"
     val sqlDelightVersion: String by project
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -55,13 +54,13 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {
+      /*  val iosMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
                 implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
-        val iosTest by getting
+        val iosTest by getting*/
     }
 }
 
