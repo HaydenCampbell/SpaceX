@@ -65,10 +65,16 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(16)
-        targetSdkVersion(31)
+        minSdk = 21
+        targetSdk = 31
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.haydencampbell.spacex.cache"
     }
 }
